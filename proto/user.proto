@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/SWETHA0705/golang-db";
+
+service User {
+    rpc CreateUser(UserRequest) returns (UserResponse){}
+}
+
+message UserRequest {
+    int32  UserId = 1;
+	string Email =2;
+    int32 	PhoneNum =3;
+	string Role = 4;
+}
+
+message UserResponse {
+
+    string success = 1;
+}
