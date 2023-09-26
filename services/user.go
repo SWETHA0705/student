@@ -9,6 +9,7 @@ import (
 
 	//"student/models"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -31,4 +32,29 @@ func (u * UserService)CreateUser(user *models.User)(string,error){
 		return "nil",err
 	}
 	return "success",nil
+}
+
+func (u*UserService)FindUser(user int)([]*models.User,error){
+match := bson.D{{
+	Key:   "UserId",
+	Value: user,
+}}
+res,err:=u.UserService.Find(u.ctx,match)
+if err!=nil{
+	return nil,err
+}else{
+ var user_details[]*models.User
+ for res.Next(u.ctx){
+	details := &models.User{}
+	err:= res.Decode(details)
+	if err!= nil{
+		return nil,err
+	}
+	user_details = append(user_details,details)
+ }
+
+return user_details,nil
+
+}
+
 }

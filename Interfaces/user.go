@@ -1,6 +1,10 @@
 package interfaces
 
-import "student/models"
+import (
+	"student/models"
+
+	//"go.mongodb.org/mongo-driver/mongo"
+)
 
 // "os/user"
 // "student/models"
@@ -9,4 +13,5 @@ import "student/models"
 
 type IUser interface{
 	CreateUser(*models.User)(string,error)
+	FindUser(int)([]*models.User,error)
 }

@@ -6,6 +6,7 @@ option go_package = "github.com/SWETHA0705/student.git";
 
 service User {
     rpc CreateUser(UserRequest) returns (UserResponse){}
+    rpc FindUser(FindRequest) returns (FindResponse){}
 }
 
 message UserRequest {
@@ -18,4 +19,14 @@ message UserRequest {
 message UserResponse {
 
     string success = 1;
+}
+message FindRequest {
+    int32  UserId = 1;
+}
+
+message FindResponse {
+    int32  UserId = 1;
+	string Email =2;
+    int32 	PhoneNum =3;
+	string Role = 4;
 }
