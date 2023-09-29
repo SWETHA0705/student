@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/SWETHA0705/student.git";
+
+service User {
+    rpc CreateUser(UserRequest) returns (UserResponse){}
+    rpc FindUser(FindRequest) returns (FindResponse){}
+    rpc UpdateUser(UpdateRequest) returns(UpdateResponse){}
+}
+
+message UserRequest {
+    int32  UserId = 1;
+	string Email =2;
+    int32 	PhoneNum =3;
+	string Role = 4;
+}
+
+message UserResponse {
+
+    string success = 1;
+}
+message FindRequest {
+    int32  UserId = 1;
+}
+
+message FindResponse {
+    int32  UserId = 1;
+    string Email = 2;
+	
+}
+message UpdateRequest{
+   int32 UserId = 1;
+   string Role = 2;
+}
+message UpdateResponse{
+    string Message = 1;
+}
